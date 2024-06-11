@@ -1,2 +1,5 @@
 __pycache__
-dev.db
+database
+moodle/data
+states
+.env
