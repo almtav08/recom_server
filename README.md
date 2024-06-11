@@ -6,7 +6,8 @@ This is an hybrid recommender system joining together collaborative filtering an
 This python server is prepared for runing using conda and Ubuntu. If you want to work with other package manager such as pip or poetry or another OS take into account that specific packages (e.g., PyTorch) may cause issues.
 
 1. The first thing you need to do is to prepare the python environment. Using conda this can be done by running the following command:
-```conda env create -f environment.yml```
+```conda env create -f environment.yml```.
+
 2. Once the python environment is created, the next step should be to establish all environment variables. You can do this by creating a file called ```.env``` in the root of the project. This file should contain the following variables:
 - ```PLATFORM_URL```: The URL of the moodle platform.
 - ```PLATFORM_API_KEY```: The token of the moodle platform.
@@ -21,7 +22,7 @@ This python server is prepared for runing using conda and Ubuntu. If you want to
 - ```GET_COURSE_LOGS```: The URL of the function that gets the logs of the courses (this is the one establish from the recommender plugin).
 
 3. Once this settings are ready the server can be run by using the following command:
-```uvicorn main:app --host {your_ip} --port {your_port}```
+```uvicorn main:app --host {your_ip} --port {your_port}```.
 
 Please note that you should declare an IP address and a port for the server to execute. Also you can add the tag ```--reload``` if you want it to reexecute if you make any changes while it is running. Before running the server you first need to load the database and how the Knowledge Graph entities are related to each other. There are different ```load_{element}.py``` files that are meant to prepare this information. You should execute them in the following order:
 
@@ -40,7 +41,7 @@ If you have any questions you can contact me at: [alemarti@uji.es](mailto:alemar
 
 ---
 
-This experiment was developed by Alex Martínez-Martínez as part of his research in the Institute of New Imaging Technologies at the Universitat Jaume I.
+This system was developed by Alex Martínez-Martínez as part of his research in the Institute of New Imaging Technologies at the Universitat Jaume I.
 
 ---
 
