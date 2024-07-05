@@ -14,9 +14,9 @@ def on_submit(course_name, var_list, course_data):
     for module in selected_modules:
         recid += 1
         if module['modname'] == 'quiz':
-            selected_modules_info.append({'id': module['id'], 'recid': recid, 'name': module['name'], 'type': module['modname'], 'quizid': module['instance']})
+            selected_modules_info.append({'id': module['id'], 'recid': recid, 'name': str(module['name']).split('**')[0].strip(), 'type': module['modname'], 'quizid': module['instance']})
         else:
-            selected_modules_info.append({'id': module['id'], 'recid': recid, 'name': module['name'], 'type': module['modname']})
+            selected_modules_info.append({'id': module['id'], 'recid': recid, 'name': str(module['name']).split('**')[0].strip(), 'type': module['modname']})
     
     # Crear un archivo JSON con los módulos seleccionados
     with open('database/resources.json', 'w', encoding='utf-8') as json_file:
@@ -41,7 +41,7 @@ async def load_moodle_info():
     for section in course_data:
         for module in section['modules']:
             var = tk.BooleanVar()
-            chk = tk.Checkbutton(root, text=f"Moodle ID: {module['id']}, Name: {module['name']}, Module Type: {module['modname']}", variable=var)
+            chk = tk.Checkbutton(root, text=f"Moodle ID: {module['id']}, Name: {str(module['name']).split('**')[0].strip()}, Module Type: {module['modname']}", variable=var)
             chk.pack(anchor='w', padx=20)
             var_list.append(var)
 
