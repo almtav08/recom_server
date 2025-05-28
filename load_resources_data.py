@@ -3,6 +3,7 @@ import json
 import re
 import tkinter as tk
 from tkinter import messagebox
+from pick import pick
 from moodle import get_course_info, send_moodle_request, get_course_by_id
 
 def on_submit(course_name, var_list, course_data, root: tk.Tk):
@@ -26,21 +27,10 @@ def on_submit(course_name, var_list, course_data, root: tk.Tk):
     messagebox.showinfo("Selected Modules", "You have selected:\n" + "\n".join(selected_modules_names))
     root.destroy()
 
-def filter_cmname(unfiltered_name, lang):
-    if 'span' in unfiltered_name:
-        pattern = r'<span lang="(?P<lang>\w+)" class="multilang">(?P<text>.*?)</span>'
-        matches = re.findall(pattern, unfiltered_name)
-        translations = {lang: text for lang, text in matches}
-        return translations[lang]
-    return unfiltered_name
-
 async def load_moodle_info():
     course_id = ''
     while not course_id:
         course_id = input('Please provide the moodle course id: ')
-    lang = input('Please select the language (es, en, ...): ')
-    if not lang:
-        lang = 'en'
 
     course = await send_moodle_request(get_course_by_id(course_id))
     course_name = course['courses'][0]['fullname']
@@ -54,7 +44,6 @@ async def load_moodle_info():
     
     var_list = []
     for module in course_data:
-        module['name'] = filter_cmname(module['name'], lang)
         var = tk.BooleanVar()
         chk = tk.Checkbutton(root, text=f"Moodle ID: {module['cmid']}, Name: {module['name']}, Module Type: {module['modulename']}", variable=var)
         chk.pack(anchor='w', padx=20)

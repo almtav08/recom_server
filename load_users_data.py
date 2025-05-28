@@ -3,7 +3,9 @@ import json
 from moodle import send_moodle_request, get_enrolled_students
 
 async def load_moodle_info():
-    course_id = input('Please provide the moodle course id: ')
+    course_id = ''
+    while not course_id:
+        course_id = input('Please provide the moodle course id: ')
 
     students = await send_moodle_request(get_enrolled_students(course_id))
     students_info = []

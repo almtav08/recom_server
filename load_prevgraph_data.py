@@ -1,5 +1,5 @@
 import asyncio
-import pickle as pkl
+import json
 import tkinter as tk
 from tkinter import messagebox
 from db import AsyncQueryGenerator
@@ -11,10 +11,11 @@ def save_relations(course_modules, all_entries):
             continue
         relations = [int(x.strip()) for x in entry.get().split(",")]
         prev_graph[module.id] = relations
-        with open('./moodle/data/prev_graph.pkl', 'wb') as og:
-            pkl.dump(prev_graph, og)
+        print(prev_graph)
+    with open('./moodle/data/prev_graph.json', 'w') as og:
+        json.dump(prev_graph, og)
 
-        messagebox.showinfo("Relations", "The relations have been created")
+    messagebox.showinfo("Relations", "The relations have been created")
 
 async def load_moodle_info():
     client = AsyncQueryGenerator()
