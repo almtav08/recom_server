@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
-class IRecommender(ABC):
+
+class Recommender(ABC):
     
     @abstractmethod
     def recommend(self):
@@ -15,5 +16,5 @@ class IRecommender(ABC):
         pass
 
     @abstractmethod
-    def retrain(self):
+    def train(self):
         pass

@@ -1,6 +1,9 @@
+import sys
 import asyncio
 import json
-from moodle import send_moodle_request, get_course_logs
+
+sys.path.append('./')
+from api_data import send_moodle_request, get_course_logs
 
 async def load_moodle_info():
     course_id = ''

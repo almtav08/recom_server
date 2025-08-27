@@ -1,13 +1,8 @@
-from abc import ABC, abstractmethod
 from collections import defaultdict
 from typing import List
-from .recommendation import Recommendation
+from recommender.modules.hybridization.hibridization import Hybridization
+from recommender.modules.recommendation.recommendation import Recommendation
 
-class Hybridization(ABC):
-    
-    @abstractmethod
-    def hybridize(self):
-        pass
 
 class WeightedHybridization(Hybridization):
     def __init__(self, recommendations: List[Recommendation], weights: List[float], top: int):
@@ -17,11 +12,9 @@ class WeightedHybridization(Hybridization):
         self.top = top
 
     def hybridize(self):
-        recommendations = defaultdict(int)
+        rec = defaultdict(int)
         for idx, recom in enumerate(self.recommendations):
             for item, score in recom.get_recommendations():
-                recommendations[item] += score * self.weights[idx]
+                rec[item] += score * self.weights[idx]
 
-        return sorted(recommendations.items(), key=lambda x: x[1], reverse=True)[:self.top]
-
-    
+        return sorted(rec.items(), key=lambda x: x[1], reverse=True)[:self.top]

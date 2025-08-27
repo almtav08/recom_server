@@ -3,7 +3,7 @@ import httpx
 from typing import List
 from dotenv import load_dotenv
 from fastapi import HTTPException
-from db import User, Resource
+from database.models import User, Resource
 
 load_dotenv(override=True)
 
@@ -67,6 +67,15 @@ def get_review_attempt(attempt_id: int) -> dict:
         "wsfunction": 'mod_quiz_get_attempt_review',
         "moodlewsrestformat": "json",
         "attemptid": attempt_id,
+    }
+
+def get_user_gradereport(course_id: int, user_id: int) -> dict:
+    return {
+        "wstoken": os.getenv("PLATFORM_API_KEY"),
+        "wsfunction": os.getenv("GET_GRADE_REPORT"),
+        "moodlewsrestformat": "json",
+        "courseid": course_id,
+        "userid": user_id
     }
 
 # Helper functions

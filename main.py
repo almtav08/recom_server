@@ -7,9 +7,12 @@ from contextlib import asynccontextmanager
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.openapi.utils import get_openapi
-from db import Interaction, Resource, RecommendedResource, CreateInteraction, QueryGenerator, AsyncQueryGenerator, User, CreateUser
-from moodle import get_message_recommendation, send_moodle_request
-from recommender import HybridRecommender
+import uvicorn
+from database.api_models import CreateInteraction, CreateUser, RecommendedResource
+from database.async_query_gen import AsyncQueryGenerator
+from database.models import Interaction, Resource, User
+from moodle.api_data import get_message_recommendation, send_moodle_request
+from recommender.modules.recommender.hybrid import HybridRecommender
 
 client = AsyncQueryGenerator()
 recom = HybridRecommender()
@@ -61,17 +64,13 @@ async def get_documentation(username: str = Depends(check_credentials)):
 async def openapi(username: str = Depends(check_credentials)):
     return get_openapi(title = "FastAPI", version="0.1.0", routes=app.routes)
 
-@app.get("/recommendations/{user_id}/{top}/{message}", tags=["Recommendations"], summary="Get recommendations for a user")
-async def recommend(user_id: int, top: int, message: bool) -> List[RecommendedResource]:
+@app.get("/recommendations/{user_id}/{top}", tags=["Recommendations"], summary="Get recommendations for a user")
+async def recommend(user_id: int, top: int) -> List[RecommendedResource]:
     db_user = await client.select_user(user_id)
     if db_user is None:
         return {"error": "User not found"}
     
     recommendations = await recom.recommend(db_user, top, client)
-    
-    if message:
-        params = get_message_recommendation(db_user, recommendations)
-        await send_moodle_request(params)
 
     return recommendations
 
@@ -109,7 +108,7 @@ async def post_interaction(interaction: CreateInteraction) -> Interaction:
         return {"error": "Resource not found"}
     # Add time as a the current timestamp
     interaction_time = int(time.time())
-    return await client.insert_interaction(Interaction(user_id=interaction.userid, resource_id=interaction.cmid, timestamp=interaction_time))
+    return await client.insert_interaction(Interaction(user_id=interaction.userid, resource_id=interaction.cmid, timestamp=interaction_time, passed=interaction.passed))
 
 @app.post("/create", tags=["Users"], summary="Create a new user")
 async def post_interaction(user: CreateUser) -> User:
@@ -122,6 +121,9 @@ async def remove_intearction(interaction_id: int):
         return {"error": "Interaction not found"}
     return await client.delete_interaction(interaction_id)
 
-@app.get("/retrain", tags=["Retrain"], summary="Retrain the recommendation model")
-async def retrain():
-    recom.retrain()
+@app.get("/train", tags=["Retrain"], summary="Retrain the recommendation model")
+async def train():
+    recom.train()
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
