@@ -107,7 +107,7 @@ async def post_interaction(interaction: CreateInteraction) -> Interaction:
     if db_resource is None:
         return {"error": "Resource not found"}
     # Add time as a the current timestamp
-    interaction_time = int(time.time())
+    interaction_time = str(time.time())
     return await client.insert_interaction(Interaction(user_id=interaction.userid, resource_id=interaction.cmid, timestamp=interaction_time, passed=interaction.passed))
 
 @app.post("/create", tags=["Users"], summary="Create a new user")

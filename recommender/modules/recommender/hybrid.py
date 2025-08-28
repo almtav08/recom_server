@@ -3,8 +3,9 @@ import json
 from typing import Dict, List, cast
 
 import torch
+from database.api_models import RecommendedResource
 from database.async_query_gen import AsyncQueryGenerator
-from database.models import Resource, User
+from database.models import User
 from recommender.modules.hybridization.weighted import WeightedHybridization
 from tracerec.algorithms.graph_based.transe import TransE
 from tracerec.algorithms.graph_based.graph_embedder import GraphEmbedder
@@ -19,34 +20,21 @@ from utils.commons import calc_user_path
 class HybridRecommender(Recommender):
     def __init__(self) -> None:
         self.device = "cpu" # torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.kb_emb = None
-        self.cf_emb = None
+        self.kb_emb: GraphEmbedder = None
+        self.cf_emb: SequentialEmbedder = None
         self.items: list = []
         self.users_emb: dict = None
         self.relations: list = []
 
     async def recommend(
         self, user: User, top: int, client: AsyncQueryGenerator
-    ) -> List[Resource]:
+    ) -> List[RecommendedResource]:
         path = [
             item
             for item in user.resources
             if item.recid in list(self.items)
         ]
-        # target_user_embedding = self.users_emb.get(
-        #     user.id,
-        #     self.cf_emb.embed(
-        #         self.kb_emb.embed(
-        #             torch.LongTensor(calc_user_path(user)).to(self.device)
-        #         )
-        #     ).detach()[0],
-        # )
-        # last_item_embedding = self.item_emb[path[-1].id]
-        # is_pass, _ = (
-        #     await check_pass_quiz(user.id, path[-1].quizid)
-        #     if path[-1].quizid
-        #     else (True, [])
-        # )
+
         interactions = await client.select_interactions_by_user_and_resource(user.id, path[-1].id)
         is_pass = interactions[-1].passed if len(path) > 0 else True
 
@@ -69,9 +57,16 @@ class HybridRecommender(Recommender):
         hybridization = WeightedHybridization([user_recom, item_recom], [0.4, 0.6], top)
 
         recommendations = []
-        for item, _ in hybridization.hybridize():
-            resource = await client.select_resource_by_recid(item)
-            recommendations.append(resource)
+
+        for item in hybridization.hybridize():
+            resource = await client.select_resource_by_recid(item['id'])
+            recommend_resource = RecommendedResource(
+                id=resource.id,
+                name=resource.name,
+                type=resource.type,
+                reason=item['explanation']
+            )
+            recommendations.append(recommend_resource)
         return recommendations
 
     async def load(self, client: AsyncQueryGenerator):
