@@ -54,7 +54,7 @@ def get_message_recommendation(user: User, recommendations: List[Resource]) -> d
 def get_user_attempts(user_id: int, quiz_id: int) -> dict:
     return {
         "wstoken": os.getenv("PLATFORM_API_KEY"),
-        "wsfunction": 'mod_quiz_get_user_attempts',
+        "wsfunction": os.getenv("GET_USER_QUIZ_ATTEMPTS"),
         "moodlewsrestformat": "json",
         "userid": user_id,
         "quizid": quiz_id,
@@ -64,7 +64,7 @@ def get_user_attempts(user_id: int, quiz_id: int) -> dict:
 def get_review_attempt(attempt_id: int) -> dict:
     return {
         "wstoken": os.getenv("PLATFORM_API_KEY"),
-        "wsfunction": 'mod_quiz_get_attempt_review',
+        "wsfunction": os.getenv("GET_REVIEW_ATTEMPT"),
         "moodlewsrestformat": "json",
         "attemptid": attempt_id,
     }

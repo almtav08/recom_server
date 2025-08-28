@@ -20,8 +20,9 @@ This python server is prepared for runing using conda and Ubuntu. If you want to
 - ```GET_COURSE_INFO```: The URL of the function that gets the information of the courses.
 - ```GET_ENROLLED_STUDENTS```: The URL of the function that gets the enrolled students of the courses.
 - ```GET_COURSE_LOGS```: The URL of the function that gets the logs of the courses (this is the one defined in the recommender plugin).
+- ```GET_GRADE_REPORT```: The URL of the function that gets the grade report of the users.
 
-3. Once this settings are ready the server can be run by using the following command:
+1. Once this settings are ready the server can be run by using the following command:
 ```uvicorn main:app --host {your_ip} --port {your_port}```.
 
 Please note that you should declare an IP address and a port for the server to execute. Also you can add the tag ```--reload``` if you want it to reexecute if you make any changes while it is running. Before running the server you first need to load the database and how the Knowledge Graph entities are related to each other. There are different ```load_{element}.py``` files that are meant to prepare this information. You should execute them in the following order:
