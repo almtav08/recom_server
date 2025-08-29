@@ -12,23 +12,33 @@ class WeightedHybridization(Hybridization):
         self.top = top
 
     def hybridize(self):
-        rec = defaultdict(lambda: {"score": 0, "sources": set()})
+        # Accumulate per-source scores without applying weights yet.
+        # We'll apply weights only to items that appear in more than one source.
+        rec = defaultdict(lambda: {"per_scores": defaultdict(float), "sources": set()})
 
-        # recolectamos scores y fuentes
+        # recolectamos scores y fuentes por fuente (index)
         for idx, recom in enumerate(self.recommendations):
             source_name = type(recom).__name__
             for item, score in recom.get_recommendations():
-                rec[item]["score"] += score * self.weights[idx]
+                rec[item]["per_scores"][idx] += score
                 rec[item]["sources"].add(source_name)
 
-        # generamos lista ordenada
-        ranked = sorted(
-            [(item, data["score"], data["sources"]) for item, data in rec.items()],
-            key=lambda x: x[1],
-            reverse=True
-        )[:self.top]
+        # Sort by score descending so highest similarity/score comes first
+        # Compute final score: if item present in multiple sources, apply weights;
+        # otherwise keep the raw score (no weighting).
+        aggregated = []
+        for item, data in rec.items():
+            per_scores = data["per_scores"]
+            sources = data["sources"]
+            if len(per_scores) > 1:
+                final_score = sum(per_scores[i] * self.weights[i] for i in per_scores)
+            else:
+                # single source -> don't apply weights
+                final_score = sum(per_scores.values())
+            aggregated.append((item, final_score, sources))
 
-        # añadimos explicaciones
+        ranked = sorted(aggregated, key=lambda x: x[1], reverse=True)[:self.top]
+
         results = []
         for item, score, sources in ranked:
             if sources == {"ItemRecommendation"}:

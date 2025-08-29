@@ -1,297 +1,67 @@
 [
     {
-        "id": 2,
-        "username": "admin",
-        "email": "lanza@uji.es"
+        "id": 119,
+        "username": "user1",
+        "email": "user1@fake.com"
     },
     {
-        "id": 3,
-        "username": "jose",
-        "email": "jose@example.com"
+        "id": 120,
+        "username": "user2",
+        "email": "user2@fake.com"
     },
     {
-        "id": 5,
-        "username": "brenda",
-        "email": "brenda@otrocorreo.com"
+        "id": 121,
+        "username": "user3",
+        "email": "user3@fake.com"
     },
     {
-        "id": 7,
-        "username": "alex",
-        "email": "alemarti@uji.es"
+        "id": 122,
+        "username": "user4",
+        "email": "user4@fake.com"
     },
     {
-        "id": 8,
-        "username": "agueda",
-        "email": "cambrone@uji.es"
+        "id": 123,
+        "username": "user5",
+        "email": "user5@fake.com"
     },
     {
-        "id": 9,
-        "username": "raul",
-        "email": "montoliu@uji.es"
+        "id": 124,
+        "username": "user6",
+        "email": "user6@fake.com"
     },
     {
-        "id": 10,
-        "username": "miguel",
-        "email": "miguel@misitio.com"
+        "id": 125,
+        "username": "user7",
+        "email": "user7@fake.com"
     },
     {
-        "id": 11,
-        "username": "laszlo",
-        "email": "szecsi.laszlo@gmail.com"
+        "id": 126,
+        "username": "user8",
+        "email": "user8@fake.com"
     },
     {
-        "id": 12,
-        "username": "lia",
-        "email": "lia@mymoodle.com"
+        "id": 127,
+        "username": "user9",
+        "email": "user9@fake.com"
     },
     {
-        "id": 13,
-        "username": "maria",
-        "email": "maria@mymoodle.com"
+        "id": 128,
+        "username": "user10",
+        "email": "user10@fake.com"
     },
     {
-        "id": 14,
-        "username": "anna",
-        "email": "tonda@uji.es"
+        "id": 129,
+        "username": "user11",
+        "email": "user11@fake.com"
     },
     {
-        "id": 18,
-        "username": "leo",
-        "email": "leo@moodle.com"
+        "id": 130,
+        "username": "user12",
+        "email": "user12@fake.com"
     },
     {
-        "id": 19,
-        "username": "carla",
-        "email": "carla@ediploma-fake.com"
-    },
-    {
-        "id": 20,
-        "username": "elena",
-        "email": "elena@ediploma-fake.com"
-    },
-    {
-        "id": 21,
-        "username": "carmen",
-        "email": "carmen@ediploma-fake.com"
-    },
-    {
-        "id": 22,
-        "username": "ediploma",
-        "email": "ediploma@fake.com"
-    },
-    {
-        "id": 76,
-        "username": "pac01_p1",
-        "email": "pac01_p1@e-diploma.com"
-    },
-    {
-        "id": 77,
-        "username": "pac02_p1",
-        "email": "pac02_p1@e-diploma.com"
-    },
-    {
-        "id": 78,
-        "username": "pac03_p1",
-        "email": "pac03_p1@e-diploma.com"
-    },
-    {
-        "id": 79,
-        "username": "pac04_p1",
-        "email": "pac04_p1@e-diploma.com"
-    },
-    {
-        "id": 80,
-        "username": "pac05_p1",
-        "email": "pac05_p1@e-diploma.com"
-    },
-    {
-        "id": 81,
-        "username": "pac06_p1",
-        "email": "pac06_p1@e-diploma.com"
-    },
-    {
-        "id": 82,
-        "username": "pac07_p1",
-        "email": "pac07_p1@e-diploma.com"
-    },
-    {
-        "id": 83,
-        "username": "pac08_p1",
-        "email": "pac08_p1@e-diploma.com"
-    },
-    {
-        "id": 84,
-        "username": "pac09_p1",
-        "email": "pac09_p1@e-diploma.com"
-    },
-    {
-        "id": 85,
-        "username": "pac10_p1",
-        "email": "pac10_p1@e-diploma.com"
-    },
-    {
-        "id": 86,
-        "username": "pac11_p1",
-        "email": "pac11_p1@e-diploma.com"
-    },
-    {
-        "id": 87,
-        "username": "pac12_p1",
-        "email": "pac12_p1@e-diploma.com"
-    },
-    {
-        "id": 88,
-        "username": "pac13_p1",
-        "email": "pac13_p1@e-diploma.com"
-    },
-    {
-        "id": 89,
-        "username": "pac14_p1",
-        "email": "pac14_p1@e-diploma.com"
-    },
-    {
-        "id": 90,
-        "username": "pac15_p1",
-        "email": "pac15_p1@e-diploma.com"
-    },
-    {
-        "id": 91,
-        "username": "pac16_p1",
-        "email": "pac16_p1@e-diploma.com"
-    },
-    {
-        "id": 92,
-        "username": "pac17_p1",
-        "email": "pac17_p1@e-diploma.com"
-    },
-    {
-        "id": 93,
-        "username": "pac18_p1",
-        "email": "pac18_p1@e-diploma.com"
-    },
-    {
-        "id": 94,
-        "username": "pac19_p1",
-        "email": "pac19_p1@e-diploma.com"
-    },
-    {
-        "id": 95,
-        "username": "pac20_p1",
-        "email": "pac20_p1@e-diploma.com"
-    },
-    {
-        "id": 96,
-        "username": "p1",
-        "email": "p1_bp@e-diploma.com"
-    },
-    {
-        "id": 97,
-        "username": "p2",
-        "email": "p2_bp@e-diploma.com"
-    },
-    {
-        "id": 98,
-        "username": "p3",
-        "email": "p3_bp@e-diploma.com"
-    },
-    {
-        "id": 99,
-        "username": "p4",
-        "email": "p4_bp@e-diploma.com"
-    },
-    {
-        "id": 100,
-        "username": "p5",
-        "email": "p5_bp@e-diploma.com"
-    },
-    {
-        "id": 101,
-        "username": "p6",
-        "email": "p6_bp@e-diploma.com"
-    },
-    {
-        "id": 102,
-        "username": "p7",
-        "email": "p7_bp@e-diploma.com"
-    },
-    {
-        "id": 103,
-        "username": "p8",
-        "email": "p8_bp@e-diploma.com"
-    },
-    {
-        "id": 104,
-        "username": "p9",
-        "email": "p9_bp@e-diploma.com"
-    },
-    {
-        "id": 105,
-        "username": "p10",
-        "email": "p10_bp@e-diploma.com"
-    },
-    {
-        "id": 106,
-        "username": "bpsubcontrol01",
-        "email": "usuario@e-diploma.es"
-    },
-    {
-        "id": 107,
-        "username": "bpsubcontrol02",
-        "email": "usuario2@e-diploma.es"
-    },
-    {
-        "id": 108,
-        "username": "bpsubcontrol03",
-        "email": "usuario@fake.es"
-    },
-    {
-        "id": 109,
-        "username": "bpsubcontrol04",
-        "email": "usuarioExtra@fake.es"
-    },
-    {
-        "id": 110,
-        "username": "bpsubcontrol05",
-        "email": "hola@fake.es"
-    },
-    {
-        "id": 111,
-        "username": "bpsubcontrol06",
-        "email": "hey@fake.es"
-    },
-    {
-        "id": 112,
-        "username": "bpsubcontrol07",
-        "email": "hi@fake.es"
-    },
-    {
-        "id": 113,
-        "username": "bpsubcontrol08",
-        "email": "h@fake.es"
-    },
-    {
-        "id": 114,
-        "username": "bpsubcontrol09",
-        "email": "a@a.com"
-    },
-    {
-        "id": 115,
-        "username": "bpsubcontrol010",
-        "email": "h@h.es"
-    },
-    {
-        "id": 116,
-        "username": "bpsubcontrol011",
-        "email": "eeee@aaaa.com"
-    },
-    {
-        "id": 117,
-        "username": "bpsubcontrol012",
-        "email": "rr.rrr@rr.es"
-    },
-    {
-        "id": 118,
-        "username": "bpsubcontrol013",
-        "email": "gg@ddd.a"
+        "id": 131,
+        "username": "user13",
+        "email": "user13@fake.com"
     }
 ]

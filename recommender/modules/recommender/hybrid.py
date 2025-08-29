@@ -32,7 +32,7 @@ class HybridRecommender(Recommender):
         path = [
             item
             for item in user.resources
-            if item.recid in list(self.items)
+            if item.recid in list(self.items) or item.recid == 0
         ]
 
         interactions = await client.select_interactions_by_user_and_resource(user.id, path[-1].id)
@@ -47,14 +47,21 @@ class HybridRecommender(Recommender):
         user_path = path_manager.get_user_path(user.id)
 
         user_recom = UserRecommendation()\
-            .calc_recommendations(self.users_emb, users, path[-1].recid, user, user_path, self.cf_emb, top)
+            .calc_recommendations(self.users_emb, users, path[-1].recid, user, user_path, self.cf_emb, top * 2)
+        
+        # Get missing entities until the current moment
+        missing_entities = []
+        visited_entities = [resource.recid for resource in user.resources if resource.recid in self.items]
+        for i in range(1, path[-1].recid):
+            if i not in visited_entities:
+                missing_entities.append(i)
 
         # Knowledge graph recommendations
         item_recom = ItemRecommendation()\
-        .calc_recommendations(self.items, self.relations, is_pass, path[-1].recid, self.kb_emb, top)
+        .calc_recommendations(self.items, self.relations, is_pass, path[-1].recid, self.kb_emb, top * 2, missing_entities=missing_entities, used_entities=visited_entities)
 
         # Combine the recommendations
-        hybridization = WeightedHybridization([user_recom, item_recom], [0.4, 0.6], top)
+        hybridization = WeightedHybridization([user_recom, item_recom], [1, 1], top)
 
         recommendations = []
 
@@ -83,6 +90,7 @@ class HybridRecommender(Recommender):
 
         items = await client.list_resources()
         self.items = list(map(lambda r: r.recid, items))
+        self.items.remove(0)
         self.relations = [0, 1] # 0 Prev, 1 Repeat
 
         self.users_emb = {}

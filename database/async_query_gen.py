@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
-from sqlalchemy.orm import registry
-from sqlalchemy import Engine, MetaData
+from sqlalchemy.orm import registry, sessionmaker
+from sqlalchemy import MetaData
+from sqlalchemy.orm import sessionmaker
 from sqlmodel import SQLModel, select
 from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
@@ -12,23 +13,47 @@ load_dotenv(override=True)
 
 class AsyncQueryGenerator:
     def __init__(self):
-        self.engine: Engine = None
+        database_url = os.getenv("DATABASE_ASYNC_URL")
+        if not database_url:
+            raise RuntimeError("DATABASE_ASYNC_URL not set in environment")
+        # Create async engine and sessionmaker factory once
+        self.engine = create_async_engine(database_url, echo=False)
+        self.async_session = sessionmaker(
+            self.engine, class_=AsyncSession, expire_on_commit=False
+        )
+        self.session: AsyncSession | None = None
+        self.connected = False
 
-    def connect(self):
-        self.engine = create_async_engine(os.getenv("DATABASE_ASYNC_URL"), echo=False)
-        self.session = AsyncSession(self.engine)
+    async def create(self):
+        async with self.engine.begin() as conn:
+            await conn.run_sync(SQLModel.metadata.create_all)
 
-    def clear(self):
-        SQLModel.metadata.drop_all(self.engine)
-        SQLModel.metadata.clear()
-        SQLModel.metadata = MetaData()
-        SQLModel.registry = registry()
+    def get_session(self):
+        """Return a new AsyncSession instance from the sessionmaker factory.
 
+        Use `await generator.get_session()` only if you expect an async function; this
+        function returns an AsyncSession instance which can be used directly or as
+        an async context manager.
+        """
+        return self.async_session()
+
+    async def connect(self):
+        # Create a persistent session for convenience (will be closed on disconnect).
+        if self.session is None:
+            self.session = self.get_session()
+        self.connected = True
+
+    async def clear(self):
+        async with self.engine.begin() as conn:
+            await conn.run_sync(SQLModel.metadata.drop_all)
     def is_connected(self):
-        return self.engine is not None
+        return self.connected
 
     async def disconnect(self):
-        await self.session.close()
+        self.connected = False
+        if self.session is not None:
+            await self.session.close()
+            self.session = None
         await self.engine.dispose()
 
     async def select_user(self, user_id: int) -> User:
@@ -70,7 +95,7 @@ class AsyncQueryGenerator:
         resource = await self.session.exec(statement)
         resource = resource.first()
         return resource
-    
+
     async def select_resource_by_recid(self, resource_id: int) -> Resource:
         statement = select(Resource).where(Resource.recid == resource_id)
         resource = await self.session.exec(statement)

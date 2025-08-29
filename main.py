@@ -19,7 +19,7 @@ recom = HybridRecommender()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    client.connect()
+    await client.connect()
     await recom.load(client)
     yield
     if client.is_connected():
@@ -100,6 +100,8 @@ async def get_interaction_by_user(user_id: int) -> List[Interaction]:
 
 @app.post("/append_log", tags=["Users"], summary="Create a new interaction for a user")
 async def post_interaction(interaction: CreateInteraction) -> Interaction:
+    if interaction.userid == 1: # Guest User
+        return {"error": "Cannot add interactions for the guest user"}
     db_user = await client.select_user(interaction.userid)
     if db_user is None:
         return {"error": "User not found"}
@@ -112,7 +114,7 @@ async def post_interaction(interaction: CreateInteraction) -> Interaction:
 
 @app.post("/create", tags=["Users"], summary="Create a new user")
 async def post_interaction(user: CreateUser) -> User:
-    return await client.create_user(User(username=user.username, password=user.password, email=user.email))
+    return await client.create_user(User(id=user.id, username=user.username, password=user.password, email=user.email))
 
 @app.delete("/interaction/{interaction_id}", tags=["Users"], summary="Delete an interaction")
 async def remove_intearction(interaction_id: int):

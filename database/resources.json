@@ -2,403 +2,88 @@
     {
         "id": 0,
         "recid": 0,
-        "name": "Learn Block Programming and Electronics",
+        "name": "Fundamentals of Artificial Intelligence",
         "type": "course"
     },
     {
-        "id": 11,
+        "id": 141,
         "recid": 1,
-        "name": "Pre - Quiz Time! Get Ready for Theory of Lecture 1",
-        "type": "quiz",
-        "quizid": 2
+        "name": "Video: What is AI?",
+        "type": "page"
     },
     {
-        "id": 13,
+        "id": 142,
         "recid": 2,
-        "name": "What's Programming All About?",
-        "type": "url"
+        "name": "Reading: History of AI",
+        "type": "page"
     },
     {
-        "id": 14,
+        "id": 143,
         "recid": 3,
-        "name": "Loops: The Repeaters of Coding",
-        "type": "url"
+        "name": "Reading: Basic Concepts. Additional Material",
+        "type": "page"
     },
     {
-        "id": 15,
+        "id": 144,
         "recid": 4,
-        "name": "Making Decisions in Code: The Conditional",
-        "type": "url"
+        "name": "Quiz: Basic concepts of AI",
+        "type": "quiz",
+        "quizid": 37
     },
     {
-        "id": 16,
+        "id": 145,
         "recid": 5,
-        "name": "Pre - Quiz Time! Get Ready for Practice of Lecture 2",
-        "type": "quiz",
-        "quizid": 4
+        "name": "Video: Search Algorithms",
+        "type": "page"
     },
     {
-        "id": 18,
+        "id": 146,
         "recid": 6,
-        "name": "Pre - Quiz Time! Get Ready for Theory of Lecture 3",
-        "type": "quiz",
-        "quizid": 5
+        "name": "Reading: Knowledge Representation",
+        "type": "page"
     },
     {
-        "id": 19,
+        "id": 147,
         "recid": 7,
-        "name": "First Steps into the World of Electronics",
-        "type": "url"
+        "name": "Reading: Search and Representation. Additional Material",
+        "type": "page"
     },
     {
-        "id": 22,
+        "id": 148,
         "recid": 8,
-        "name": "Connecting Arduino, Sensors, and Actuators",
-        "type": "url"
+        "name": "Quiz: Search and Representation Exercises",
+        "type": "quiz",
+        "quizid": 38
     },
     {
-        "id": 23,
+        "id": 149,
         "recid": 9,
-        "name": "Pre - Quiz Time! Get Ready for Practice of Lecture 4",
-        "type": "quiz",
-        "quizid": 6
+        "name": "Video: Introduction to ML",
+        "type": "page"
     },
     {
-        "id": 25,
+        "id": 150,
         "recid": 10,
-        "name": "Pre - Quiz Time! Get Ready for the Last Module",
-        "type": "quiz",
-        "quizid": 7
+        "name": "Reading: Basic Neural Networks",
+        "type": "page"
     },
     {
-        "id": 31,
+        "id": 151,
         "recid": 11,
-        "name": "Virtual Playground: Explore BlockCoding in Virtual Reality",
-        "type": "externalcontent"
+        "name": "Reading: ML. Additional Material",
+        "type": "page"
     },
     {
-        "id": 33,
+        "id": 152,
         "recid": 12,
-        "name": "Post - Quiz Time! How Much Have you Learned for Lecture 1?",
+        "name": "Quiz: ML Assessment",
         "type": "quiz",
-        "quizid": 14
+        "quizid": 39
     },
     {
-        "id": 39,
+        "id": 153,
         "recid": 13,
-        "name": "¿Cuánto has aprendido?",
-        "type": "quiz",
-        "quizid": 20
-    },
-    {
-        "id": 40,
-        "recid": 14,
-        "name": "Post - Quiz Time! How Much Have you Learned for Lecture 4?",
-        "type": "quiz",
-        "quizid": 21
-    },
-    {
-        "id": 45,
-        "recid": 15,
-        "name": "Collaborative Virtual Reality Codeventure",
-        "type": "externalcontent"
-    },
-    {
-        "id": 46,
-        "recid": 16,
-        "name": "Post - Quiz Time! How Much Have you Learned for the Last Module?",
-        "type": "quiz",
-        "quizid": 26
-    },
-    {
-        "id": 81,
-        "recid": 17,
-        "name": "Pre - Quiz Time! What is Your Emotional State Before the Lecture 1?",
-        "type": "page"
-    },
-    {
-        "id": 82,
-        "recid": 18,
-        "name": "Sociodemographics",
-        "type": "page"
-    },
-    {
-        "id": 83,
-        "recid": 19,
-        "name": "Post - Quiz Time! What is Your Emotional State After the Lecture 1?",
-        "type": "page"
-    },
-    {
-        "id": 84,
-        "recid": 20,
-        "name": "Pre - Quiz Time! What is Your Emotional State Before the Lecture 2?",
-        "type": "page"
-    },
-    {
-        "id": 85,
-        "recid": 21,
-        "name": "Post - Quiz Time! What is Your Emotional State After the Lecture 2?",
-        "type": "page"
-    },
-    {
-        "id": 86,
-        "recid": 22,
-        "name": "Pre - Quiz Time! What is Your Emotional State Before the Lecture 3?",
-        "type": "page"
-    },
-    {
-        "id": 87,
-        "recid": 23,
-        "name": "Post - Quiz Time! What is Your Emotional State After the Lecture 3?",
-        "type": "page"
-    },
-    {
-        "id": 88,
-        "recid": 24,
-        "name": "Pre - Quiz Time! What is Your Emotional State Before the Lecture 4?",
-        "type": "page"
-    },
-    {
-        "id": 89,
-        "recid": 25,
-        "name": "Post - Quiz Time! What is Your Emotional State After the Lecture 4?",
-        "type": "page"
-    },
-    {
-        "id": 90,
-        "recid": 26,
-        "name": "Pre - Quiz Time! What is Your Emotional State Before the Last Module?",
-        "type": "page"
-    },
-    {
-        "id": 91,
-        "recid": 27,
-        "name": "Post - Quiz Time! What is Your Emotional State After the Last Module?",
-        "type": "page"
-    },
-    {
-        "id": 92,
-        "recid": 28,
-        "name": "Locus of Control",
-        "type": "page"
-    },
-    {
-        "id": 99,
-        "recid": 29,
-        "name": "General Self-Efficacy Scale",
-        "type": "page"
-    },
-    {
-        "id": 100,
-        "recid": 30,
-        "name": "Emotional Regulation Questionnaire",
-        "type": "page"
-    },
-    {
-        "id": 101,
-        "recid": 31,
-        "name": "Curiosity and Exploration Inventory-II",
-        "type": "page"
-    },
-    {
-        "id": 102,
-        "recid": 32,
-        "name": "Post - Usability Questionnaire for Lecture 2",
-        "type": "page"
-    },
-    {
-        "id": 103,
-        "recid": 33,
-        "name": "Post - Usability Questionnaire for the Last Module",
-        "type": "page"
-    },
-    {
-        "id": 104,
-        "recid": 34,
-        "name": "Post - Sickness Questionnaire for Lecture 2",
-        "type": "page"
-    },
-    {
-        "id": 105,
-        "recid": 35,
-        "name": "Post - Sickness Questionnaire for the Last Module",
-        "type": "page"
-    },
-    {
-        "id": 106,
-        "recid": 36,
-        "name": "Post - Presence Questionnaire for Lecture 2",
-        "type": "page"
-    },
-    {
-        "id": 107,
-        "recid": 37,
-        "name": "Post - Presence Questionnaire for the Last Module",
-        "type": "page"
-    },
-    {
-        "id": 108,
-        "recid": 38,
-        "name": "Post - Usability Questionnaire for Lecture 4",
-        "type": "page"
-    },
-    {
-        "id": 109,
-        "recid": 39,
-        "name": "Post - Measure your Cognitive Load After Lecture 1",
-        "type": "page"
-    },
-    {
-        "id": 110,
-        "recid": 40,
-        "name": "Post - Measure your Cognitive Load After Lecture 2",
-        "type": "page"
-    },
-    {
-        "id": 111,
-        "recid": 41,
-        "name": "Post - Measure your Cognitive Load After Lecture 3",
-        "type": "page"
-    },
-    {
-        "id": 112,
-        "recid": 42,
-        "name": "Post - Measure your Cognitive Load After Lecture 4",
-        "type": "page"
-    },
-    {
-        "id": 113,
-        "recid": 43,
-        "name": "Post - Measure your Cognitive Load After the Last Module",
-        "type": "page"
-    },
-    {
-        "id": 115,
-        "recid": 44,
-        "name": "Aprendiendo a programar por bloques",
-        "type": "resource"
-    },
-    {
-        "id": 116,
-        "recid": 45,
-        "name": "Post - Quiz Time! How Much Have you Learned for Lecture 3?",
-        "type": "quiz",
-        "quizid": 33
-    },
-    {
-        "id": 117,
-        "recid": 46,
-        "name": "Pre -Researching ethical values / aspects",
-        "type": "page"
-    },
-    {
-        "id": 118,
-        "recid": 47,
-        "name": "Post - Researching ethical values / aspects",
-        "type": "page"
-    },
-    {
-        "id": 119,
-        "recid": 48,
-        "name": "Aprendiendo a trabajar con Arduino y sus sensores",
-        "type": "resource"
-    },
-    {
-        "id": 120,
-        "recid": 49,
-        "name": "Learning to program by blocks",
-        "type": "resource"
-    },
-    {
-        "id": 122,
-        "recid": 50,
-        "name": "Learning how to work with Arduino and its sensors",
-        "type": "resource"
-    },
-    {
-        "id": 123,
-        "recid": 51,
-        "name": "Integrating What we have Learned So Far",
-        "type": "url"
-    },
-    {
-        "id": 125,
-        "recid": 52,
-        "name": "Practice with Arduino and Components",
-        "type": "quiz",
-        "quizid": 34
-    },
-    {
-        "id": 126,
-        "recid": 53,
-        "name": "What's Programming All About? - V2",
-        "type": "page"
-    },
-    {
-        "id": 127,
-        "recid": 54,
-        "name": "Informed Consent Form",
-        "type": "consentform"
-    },
-    {
-        "id": 128,
-        "recid": 55,
-        "name": "Aprendiendo a programar por bloques",
-        "type": "resource"
-    },
-    {
-        "id": 131,
-        "recid": 56,
-        "name": "Game Engagement Questionnaire",
-        "type": "page"
-    },
-    {
-        "id": 132,
-        "recid": 57,
-        "name": "Antes de la actividad",
-        "type": "label"
-    },
-    {
-        "id": 133,
-        "recid": 58,
-        "name": "Consentimiento informado",
-        "type": "feedback"
-    },
-    {
-        "id": 134,
-        "recid": 59,
-        "name": "Actividad",
-        "type": "label"
-    },
-    {
-        "id": 135,
-        "recid": 60,
-        "name": "Después de la actividad",
-        "type": "label"
-    },
-    {
-        "id": 136,
-        "recid": 61,
-        "name": "Datos sociodemográficos",
-        "type": "page"
-    },
-    {
-        "id": 137,
-        "recid": 62,
-        "name": "Practice with Arduino and Components with AR",
-        "type": "externalcontent"
-    },
-    {
-        "id": 138,
-        "recid": 63,
-        "name": "Cuestionario y actividad",
-        "type": "quiz",
-        "quizid": 36
-    },
-    {
-        "id": 139,
-        "recid": 64,
-        "name": "Datos sociodemográficos SubControl",
+        "name": "Reading: Real-world Applications of AI",
         "type": "page"
     }
 ]

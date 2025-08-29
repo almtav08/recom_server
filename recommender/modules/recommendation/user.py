@@ -29,8 +29,8 @@ class UserRecommendation(Recommendation):
             # Calculate the resource path for the neighbor user
             neig_path: List[int] = []
             for resource in neig_user.resources:
-                if len(neig_path) == 0 or neig_path[-1] != resource.id:
-                    neig_path.append(resource.id)
+                if len(neig_path) == 0 or neig_path[-1] != resource.recid:
+                    neig_path.append(resource.recid)
             # Obtain the ocurrence of the last item of the target user, if the item is not found, set the starting # index to 0
             last_item_idx = neig_path.index(target_item) + 1 if target_item in neig_path else 0
             # Iterate over the neighbor's path starting from the index after the last item
@@ -45,7 +45,8 @@ class UserRecommendation(Recommendation):
             recommendations_tmp[item_id] /= max_preference
         # If the item is already in the target user path it is removed
         for item in target_user.resources:
-            recommendations_tmp.pop(item.id, None)
+            recommendations_tmp.pop(item.recid, None)
         recommendations_s = sorted(recommendations_tmp.items(), key=lambda x: x[1], reverse=True)[:top]
+
         self.recommendations = recommendations_s
         return self

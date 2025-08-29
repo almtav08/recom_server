@@ -31,16 +31,16 @@ if __name__ == "__main__":
 
     sampler = PathBasedNegativeSampler(
         triples_manager,
-        corruption_ratio=0.5,
+        corruption_ratio=0,
         device="cpu",
-        min_distance=1.0,
+        min_distance=2.0,
     )
     train_x_neg = sampler.sample(train_x, num_samples=1, random_state=42)
 
     transe = TransE(
         num_entities=triples_manager.get_entity_count(),
         num_relations=2,
-        embedding_dim=10,
+        embedding_dim=100,
         device="cpu",
         norm=1,
     )
@@ -54,9 +54,9 @@ if __name__ == "__main__":
     transe.fit(
         train_x,
         train_x_neg,
-        num_epochs=1,
-        batch_size=1,
-        lr=0.001,
+        num_epochs=400,
+        batch_size=4,
+        lr=0.00001,
         verbose=True,
         checkpoint_path="./recommender/states/know.pth",
     )

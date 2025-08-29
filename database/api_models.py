@@ -31,6 +31,7 @@ class CreateInteraction(BaseModel):
     passed: bool
 
 class CreateUser(BaseModel):
+    id: int
     username: str
     password: str
     email: str

@@ -69,7 +69,7 @@ def get_review_attempt(attempt_id: int) -> dict:
         "attemptid": attempt_id,
     }
 
-def get_user_gradereport(course_id: int, user_id: int) -> dict:
+def get_user_gradereport(user_id: int, course_id: int) -> dict:
     return {
         "wstoken": os.getenv("PLATFORM_API_KEY"),
         "wsfunction": os.getenv("GET_GRADE_REPORT"),
